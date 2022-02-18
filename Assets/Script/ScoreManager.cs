@@ -61,6 +61,7 @@ public class ScoreManager : MonoBehaviour
         float pointEnPlus = timeScoreLimit / diffTemp * timeScoreFactor;
         Debug.Log("point temps : " +     pointEnPlus);
         score += (int) pointEnPlus;
+        Debug.Log("score total : " + score);
         scoreEvents?.Invoke(score);
         estNiveauEnCours = false;
     }
