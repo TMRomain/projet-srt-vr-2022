@@ -4813,8 +4813,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5254093362552881521}
-  - component: {fileID: 1657167919731359208}
   - component: {fileID: 5457817792096359150}
+  - component: {fileID: 3647390112800290690}
   m_Layer: 0
   m_Name: Anneau
   m_TagString: Untagged
@@ -4837,19 +4837,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1657167919731359208
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8201244983190080123}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 10, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5457817792096359150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4867,3 +4854,16 @@ MonoBehaviour:
   tag: Player
   scoreManager: {fileID: 0}
   positionDeLexplosion: {fileID: 5254093362552881521}
+--- !u!65 &3647390112800290690
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8201244983190080123}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
