@@ -15,7 +15,14 @@ public class anneaux : MonoBehaviour
 
     [SerializeField] private Transform positionDeLexplosion;
 
-    
+    private void Start()
+    {
+        if (scoreManager == null)
+        {
+            Debug.LogError("LE SCORE MANAGER NEST PAS SET DANS LES ANNEAUX !!!");
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.tag);
