@@ -1,6 +1,9 @@
 using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.InputSystem;
+using UnityEngine.XR.OpenXR.Input;
+
 
 namespace UnityStandardAssets.Vehicles.Aeroplane
 {
@@ -18,6 +21,10 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
         private float m_Yaw;
 
 
+        //Recuperation des controlle
+        public InputActionReference axisX;
+
+
         private void Awake()
         {
             // Set up the reference to the aeroplane controller.
@@ -31,9 +38,8 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
             //float roll = CrossPlatformInputManager.GetAxis("Mouse X");
             //float pitch = CrossPlatformInputManager.GetAxis("Mouse Y");
 
-            float roll = Input.GetAxis("Oculus_GearVR_RThumbstickY");
-            float pitch = Input.GetAxis("Oculus_GearVR_RThumbstickX");
-            Debug.Log(pitch);
+            float roll = -Input.GetAxis("Oculus_GearVR_RThumbstickY");
+            float pitch = -Input.GetAxis("Oculus_GearVR_RThumbstickX");
 
 
             m_AirBrakes = CrossPlatformInputManager.GetButton("Fire1");
