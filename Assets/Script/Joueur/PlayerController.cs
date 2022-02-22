@@ -31,16 +31,17 @@ public class PlayerController : MonoBehaviour
 
     float resistanceAir = 10;
 
-    
+    float distSol;
     // Start is called before the first frame update
     void Start()
     {
-        
+        distSol = player.GetComponent<CapsuleCollider>().bounds.extents.y;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(estAuSol());
         //Ajouter && estDansMarge(mainGauche.eulerAngles.x,valeurRotationHaut,margeDetection) quand relier au casque
         if(estDansMarge(mainDroite.eulerAngles.x,valeurRotationHaut,margeDetection) ){
             player.GetComponent<Rigidbody>().AddForce(new Vector3(0,vitesseAccendente * Time.deltaTime,0));
@@ -56,5 +57,8 @@ public class PlayerController : MonoBehaviour
             }
         }
         return true;
+    }
+    bool estAuSol(){
+        return Physics.Raycast(player.transform.position, -Vector3.up, distSol + 0.1f);
     }
 }
