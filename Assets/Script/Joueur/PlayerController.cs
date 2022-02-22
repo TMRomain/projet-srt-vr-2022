@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Transform cameraPosition;
 
+    [SerializeField]
+    GameObject player;
     float valeurRotationHaut = 90;
 
     [SerializeField]
@@ -39,8 +41,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Ajouter && estDansMarge(mainGauche.eulerAngles.x,valeurRotationHaut,margeDetection) quand relier au case
+        //Ajouter && estDansMarge(mainGauche.eulerAngles.x,valeurRotationHaut,margeDetection) quand relier au casque
         if(estDansMarge(mainDroite.eulerAngles.x,valeurRotationHaut,margeDetection) ){
+            player.GetComponent<Rigidbody>().AddForce(new Vector3(0,vitesseAccendente,0));
             Debug.Log("Vol");
         }
         // Debug.Log(mainDroite.eulerAngles.x);
