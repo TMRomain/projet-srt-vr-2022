@@ -18,11 +18,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     GameObject player;
-    float valeurRotationHaut = 90;
-    float valeurRotationAvant = 0;
+
+
+    float valeurRotationHaut = 90f;
+    float valeurRotationAvant = 0f;
+    float margeDetectionGaucheDroite = 0.3f;
 
     [SerializeField]
-    float margeDetection = 10;
+    float margeDetection = 10f;
 
 
     [SerializeField]
@@ -49,20 +52,27 @@ public class PlayerController : MonoBehaviour
         //Detection main vers le haut
         if(estDansMarge(mainDroite.eulerAngles.x,valeurRotationHaut,margeDetection) ){
             player.GetComponent<Rigidbody>().AddForce(new Vector3(0,vitesseAccendente * Time.deltaTime,0));
-            Debug.Log("Vol");
         }
 
         //Detetection plus au sol main vers l'avant avancer
         if(!estAuSol() && estDansMarge(mainDroite.eulerAngles.x,valeurRotationAvant,margeDetection)){
             player.GetComponent<Rigidbody>().AddForce(new Vector3(0,0,-vitesseAccendente * Time.deltaTime));
-            //Detection main vers l'avant + difference de hauteur
-            float hauteurMainDroite = mainDroite.position.y;
-            float hauteurMainGauche = mainGauche.position.y;
-            Debug.Log(Mathf.Abs(hauteurMainDroite - hauteurMainGauche));
+
 
 
         }
+        //Detection main vers l'avant + difference de hauteur
+        float hauteurMainDroite = mainDroite.position.y;
+        float hauteurMainGauche = mainGauche.position.y;
+        Debug.Log(hauteurMainDroite - hauteurMainGauche);
 
+        if(hauteurMainDroite - hauteurMainGauche >= margeDetectionGaucheDroite)
+        {
+            player.GetComponent<Rigidbody>().AddForce(new Vector3(vitesseAccendente * Time.deltaTime, 0, 0));
+        }else if (hauteurMainDroite - hauteurMainGauche <= -margeDetectionGaucheDroite)
+        {
+            player.GetComponent<Rigidbody>().AddForce(new Vector3(-vitesseAccendente * Time.deltaTime, 0, 0));
+        }
 
         //if(estDansMarge(mainDroite.eulerAngles.x, valeurRotationAvant, margeDetection) )
         //{
