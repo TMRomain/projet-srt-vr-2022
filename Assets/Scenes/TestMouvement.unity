@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -388,7 +388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135946242}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.234428, y: 0.8324597, z: -2.1488018}
+  m_LocalPosition: {x: 2.234428, y: 0, z: -2.1488018}
   m_LocalScale: {x: 0.3706267, y: 0.31632325, z: 0.68375}
   m_Children: []
   m_Father: {fileID: 1476915435}
@@ -426,9 +426,9 @@ MonoBehaviour:
   mainDroite: {fileID: 1591843656}
   mainGauche: {fileID: 135946246}
   cameraPosition: {fileID: 1257494958}
-  player: {fileID: 0}
+  player: {fileID: 1476915434}
   margeDetection: 10
-  vitesseAccendente: 50
+  vitesseAccendente: 250
   resistanceAir: 10
 --- !u!4 &620990613
 Transform:
@@ -582,13 +582,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1476915434}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 0.35
+  m_Drag: 5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &1476915437
 CapsuleCollider:
@@ -693,7 +693,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1591843652}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.76442796, y: 0.8324597, z: -2.1488018}
+  m_LocalPosition: {x: 0.76442796, y: 0, z: -2.1488018}
   m_LocalScale: {x: 0.3706267, y: 0.31632325, z: 0.68375}
   m_Children: []
   m_Father: {fileID: 1476915435}
@@ -751,7 +751,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d22f8652b64aa3a40a900ba9687a5a5f, type: 2}
+  - {fileID: -3033667219593020291, guid: 84891c02dc2167a44bfd9ca33dcda010, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

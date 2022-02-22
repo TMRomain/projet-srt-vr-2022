@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     float resistanceAir = 10;
 
     float distSol;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -44,12 +45,29 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(estAuSol());
         //Ajouter && estDansMarge(mainGauche.eulerAngles.x,valeurRotationHaut,margeDetection) quand relier au casque
+
+        //Detection main vers le haut
         if(estDansMarge(mainDroite.eulerAngles.x,valeurRotationHaut,margeDetection) ){
             player.GetComponent<Rigidbody>().AddForce(new Vector3(0,vitesseAccendente * Time.deltaTime,0));
+            Debug.Log("Vol");
         }
+
+        //Detetection plus au sol main vers l'avant avancer
         if(!estAuSol() && estDansMarge(mainDroite.eulerAngles.x,valeurRotationAvant,margeDetection)){
             player.GetComponent<Rigidbody>().AddForce(new Vector3(0,0,-vitesseAccendente * Time.deltaTime));
+            //Detection main vers l'avant + difference de hauteur
+            float hauteurMainDroite = mainDroite.position.y;
+            float hauteurMainGauche = mainGauche.position.y;
+            Debug.Log(Mathf.Abs(hauteurMainDroite - hauteurMainGauche));
+
+
         }
+
+
+        //if(estDansMarge(mainDroite.eulerAngles.x, valeurRotationAvant, margeDetection) )
+        //{
+
+        //}
         // Debug.Log(estDansMarge(mainDroite.eulerAngles.x,valeurRotationHaut,margeDetection));
         // Debug.Log(mainDroite.eulerAngles.x);
     }
