@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField]
-    float vitesseAccendente = 50;
+    float vitesseAccendente = 0.5f;
 
     [SerializeField]
 
@@ -43,8 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         //Ajouter && estDansMarge(mainGauche.eulerAngles.x,valeurRotationHaut,margeDetection) quand relier au casque
         if(estDansMarge(mainDroite.eulerAngles.x,valeurRotationHaut,margeDetection) ){
-            player.GetComponent<Rigidbody>().AddForce(new Vector3(0,vitesseAccendente,0));
-            Debug.Log("Vol");
+            player.GetComponent<Rigidbody>().AddForce(new Vector3(0,vitesseAccendente * Time.deltaTime,0));
         }
         // Debug.Log(mainDroite.eulerAngles.x);
     }
