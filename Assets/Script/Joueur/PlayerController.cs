@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     GameObject player;
 
 
-    float valeurRotationHaut = 90f;
+    float valeurRotationHaut = 270f;
     float valeurRotationAvant = 0f;
     float margeDetectionGaucheDroite = 0.3f;
 
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField]
-    float vitesseAccendente = 0.5f;
+    float vitesseAccendente = 150f;
 
     [SerializeField]
 
@@ -48,10 +48,11 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(estAuSol());
         //Ajouter && estDansMarge(mainGauche.eulerAngles.x,valeurRotationHaut,margeDetection) quand relier au casque
-
+        //Debug.Log(mainDroite.eulerAngles.x);
         //Detection main vers le haut
-        if(estDansMarge(mainDroite.eulerAngles.x,valeurRotationHaut,margeDetection) ){
+        if (estDansMarge(mainDroite.eulerAngles.x,valeurRotationHaut,margeDetection) ){
             player.GetComponent<Rigidbody>().AddForce(new Vector3(0,vitesseAccendente * Time.deltaTime,0));
+            //Debug.Log("Vol");
         }
 
         //Detetection plus au sol main vers l'avant avancer
@@ -61,19 +62,20 @@ public class PlayerController : MonoBehaviour
 
 
         }
+
         //Detection main vers l'avant + difference de hauteur
         float hauteurMainDroite = mainDroite.position.y;
         float hauteurMainGauche = mainGauche.position.y;
-        Debug.Log(hauteurMainDroite - hauteurMainGauche);
+        //Debug.Log(hauteurMainDroite - hauteurMainGauche);
 
-        if(hauteurMainDroite - hauteurMainGauche >= margeDetectionGaucheDroite)
+        if (hauteurMainDroite - hauteurMainGauche >= margeDetectionGaucheDroite)
         {
             player.GetComponent<Rigidbody>().AddForce(new Vector3(vitesseAccendente * Time.deltaTime, 0, 0));
-        }else if (hauteurMainDroite - hauteurMainGauche <= -margeDetectionGaucheDroite)
+        }
+        else if (hauteurMainDroite - hauteurMainGauche <= -margeDetectionGaucheDroite)
         {
             player.GetComponent<Rigidbody>().AddForce(new Vector3(-vitesseAccendente * Time.deltaTime, 0, 0));
         }
-
         //if(estDansMarge(mainDroite.eulerAngles.x, valeurRotationAvant, margeDetection) )
         //{
 
