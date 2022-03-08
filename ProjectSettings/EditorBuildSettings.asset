@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3333cdb9d5932e3493cc4594cbd4e6ec14f7333d2d72d941857b50db78deee21
-size 726
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes: []
+  m_configObjects:
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 07a9ee58a0c074c428efff65c5a4f857, type: 2}
