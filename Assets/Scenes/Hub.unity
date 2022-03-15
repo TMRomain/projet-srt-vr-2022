@@ -113949,12 +113949,12 @@ MonoBehaviour:
       m_Name: Position
       m_Type: 0
       m_ExpectedControlType: Vector3
-      m_Id: 
+      m_Id: bc500c90-1377-4518-abf0-34caad332ea3
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 
+        m_Id: 8ea58758-e3af-48e2-aea6-b765170f2902
         m_Path: <XRHMD>/centerEyePosition
         m_Interactions: 
         m_Processors: 
@@ -113969,12 +113969,12 @@ MonoBehaviour:
       m_Name: Rotation
       m_Type: 0
       m_ExpectedControlType: Quaternion
-      m_Id: 
+      m_Id: a14b1870-b6be-49b4-a025-065a0cb07410
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 
+        m_Id: ffb949b6-c098-4772-9b9c-29d2f09a90c5
         m_Path: <XRHMD>/centerEyeRotation
         m_Interactions: 
         m_Processors: 
@@ -114066,6 +114066,7 @@ GameObject:
   - component: {fileID: 700051213}
   - component: {fileID: 700051209}
   - component: {fileID: 700051212}
+  - component: {fileID: 700051214}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Player
@@ -114112,7 +114113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700051208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2071520353}
@@ -114149,6 +114150,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vrTeleporter: {fileID: 551980765}
   controller: {fileID: 2048801671}
+--- !u!136 &700051214
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700051208}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &775418842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -116588,6 +116603,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114216818834575526, guid: 003726254e0f5a7488ba67e6b79ef4f1, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 2048801671}
+    - target: {fileID: 114216818834575526, guid: 003726254e0f5a7488ba67e6b79ef4f1, type: 3}
       propertyPath: CurrentFloor
       value: 1
       objectReference: {fileID: 0}
@@ -117816,6 +117835,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114216818834575526, guid: 003726254e0f5a7488ba67e6b79ef4f1, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 2048801671}
+    - target: {fileID: 114216818834575526, guid: 003726254e0f5a7488ba67e6b79ef4f1, type: 3}
       propertyPath: CurrentFloor
       value: -12
       objectReference: {fileID: 0}
@@ -117998,6 +118021,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114216818834575526, guid: 003726254e0f5a7488ba67e6b79ef4f1, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 2048801671}
     - target: {fileID: 114216818834575526, guid: 003726254e0f5a7488ba67e6b79ef4f1, type: 3}
       propertyPath: CurrentFloor
       value: -11
@@ -118491,6 +118518,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114216818834575526, guid: 003726254e0f5a7488ba67e6b79ef4f1, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 2048801671}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 003726254e0f5a7488ba67e6b79ef4f1, type: 3}
 --- !u!43 &1774915003
