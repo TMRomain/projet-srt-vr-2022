@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,11 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private Transform camera;
     [SerializeField] bool cameraControl = true;
+    private Rigidbody _rb;
+    private void Awake()
+    {
+        _rb = gameObject.GetComponent<Rigidbody>();
+    }
 
     private void Update()
     {
@@ -32,6 +38,7 @@ public class playerMovement : MonoBehaviour
         else
         {
             transform.Translate(camera.forward * (Time.deltaTime * speed * vertical));
+            //_rb.AddForce(camera.forward * (Time.deltaTime * speed * vertical) * 10, ForceMode.Force);
         }
                        
     }
