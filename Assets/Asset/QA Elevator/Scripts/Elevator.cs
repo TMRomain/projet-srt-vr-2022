@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Elevator : MonoBehaviour {
 	private bool inTrigger = false;
@@ -91,8 +92,12 @@ public class Elevator : MonoBehaviour {
     private static SphereCollider extraCollider;
 
 
+    [SerializeField] private ActionBasedController controller;
+    
 	// Use this for initialization
 	void Awake () {
+		
+		
 		if (GetComponentInChildren<ReflectionProbe> ()) {
 			probe = GetComponentInChildren<ReflectionProbe> ();
 			probe.refreshMode = UnityEngine.Rendering.ReflectionProbeRefreshMode.OnAwake;
@@ -169,6 +174,7 @@ public class Elevator : MonoBehaviour {
 		if(isPlayer){
 			if (Player.GetComponentInChildren<Camera>().transform) {
 				PlayerCam = Player.GetComponentInChildren<Camera>().transform;
+				Debug.Log(PlayerCam);
 			} else {
 				Debug.LogWarning ("Elevator: Can't find Player's camera. Please, check that your Player have a camera parented to it.");
 				this.enabled = false;
@@ -209,7 +215,8 @@ public class Elevator : MonoBehaviour {
 		if (inTrigger) {
 
 			RaycastHit[] hits;
-				if (Input.GetKeyDown (KeyCode.E)) {
+				Debug.Log("action" + controller.activateActionValue.action.ReadValue<bool>());
+				if (Input.GetKeyDown (KeyCode.E) || controller.activateActionValue.action.ReadValue<bool>()) {
 
 					hits = Physics.RaycastAll (PlayerCam.position, PlayerCam.forward, 3);
 
