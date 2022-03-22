@@ -24,7 +24,7 @@ public class playerMovement : MonoBehaviour
     {
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
-        bool isPressed = controller.selectAction.action.ReadValue<bool>(); 
+        //bool isPressed = controller.selectAction.action.ReadValue<bool>(); 
         // if (!cameraControl)
         // {
                 
