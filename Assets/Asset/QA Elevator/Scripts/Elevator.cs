@@ -132,9 +132,7 @@ public class Elevator : MonoBehaviour {
 		SoundFX.maxDistance = 10;
 		SoundFX.rolloffMode = AudioRolloffMode.Linear;
 		SoundFX.priority = 256;
-
-		//
-
+		
 
 
 		DoorsAnim = gameObject.GetComponent<Animation> ();
