@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class Elevator : MonoBehaviour {
 	private bool inTrigger = false;
 	private Rigidbody Player;
 	private Transform PlayerCam;
+
+	[SerializeField] private Transform playerRightHand;
 
 	[Tooltip("Type your Player's tag here.")]
 	public string PlayerTag = "Player";
@@ -215,14 +218,13 @@ public class Elevator : MonoBehaviour {
 		if (inTrigger) {
 
 			RaycastHit[] hits;
-				Debug.Log("action" + controller.activateActionValue.action.ReadValue<bool>());
-				if (Input.GetKeyDown (KeyCode.E) || controller.activateActionValue.action.ReadValue<bool>()) {
+				Debug.Log("action" + (controller.activateAction.action.ReadValue<float>() >= 1));
+				if (Input.GetKeyDown (KeyCode.E) || controller.activateAction.action.ReadValue<float>() >= 1) {
 
-					hits = Physics.RaycastAll (PlayerCam.position, PlayerCam.forward, 3);
-
+					hits = Physics.RaycastAll (playerRightHand.position, playerRightHand.forward, 3);
 					for (int i = 0; i < hits.Length; i++) {
 						RaycastHit hit = hits [i];
-
+						Debug.Log(hit.transform.gameObject.name);
 					if (hit.transform.tag == "ElevatorButtonOpen" && !isOpen) {
 						BtnSoundFX.clip = ElevatorBtn;
 						BtnSoundFX.volume = ElevatorBtnVolume;
