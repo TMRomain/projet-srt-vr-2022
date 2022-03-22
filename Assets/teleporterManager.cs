@@ -14,9 +14,9 @@ public class teleporterManager : MonoBehaviour
     private void Start()
     {
         vrTeleporter.ToggleDisplay(true);
-        bool isPressed = controller.selectAction.action.ReadValue<bool>();
+        bool isPressed = controller.activateAction.action.ReadValue<bool>();
         
-        controller.selectAction.action.performed += ActionOnperformed;
+        controller.activateAction.action.performed += ActionOnperformed;
     }
 
     private void ActionOnperformed(InputAction.CallbackContext obj)

@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1995176190742820, guid: 949cac64006073b489556d076d0c3696, type: 3}
       propertyPath: m_Name
-      value: HUD
+      value: HUD Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4868471994453908, guid: 949cac64006073b489556d076d0c3696, type: 3}
       propertyPath: m_RootOrder
