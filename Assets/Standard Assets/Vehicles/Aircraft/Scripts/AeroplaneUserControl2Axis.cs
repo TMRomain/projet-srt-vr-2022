@@ -25,9 +25,12 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
         private void FixedUpdate()
         {
             // Read input for the pitch, yaw, roll and throttle of the aeroplane.
-            float roll = CrossPlatformInputManager.GetAxis("Horizontal");
-            float pitch = CrossPlatformInputManager.GetAxis("Vertical");
+            //float roll = CrossPlatformInputManager.GetAxis("Horizontal");
+            //float pitch = CrossPlatformInputManager.GetAxis("Vertical");
+            float roll = -Input.GetAxis("Oculus_GearVR_RThumbstickY");
+            float pitch = -Input.GetAxis("Oculus_GearVR_RThumbstickX");
             bool airBrakes = CrossPlatformInputManager.GetButton("Fire1");
+            bool airBrakes2 = CrossPlatformInputManager.GetButton("Fire2");
 
             // auto throttle up, or down if braking.
             float throttle = airBrakes ? -1 : 1;
