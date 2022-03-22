@@ -6,14 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/VR Beginner/Scenes/Final/EscapeRoom.unity
-    guid: 0f290611f0f8be4419d06b71aba4e36a
+    path: Assets/Scenes/Hub.unity
+    guid: a4b9dfc7ef8e1054aaf96ee47255e8ff
+  - enabled: 1
+    path: Assets/Scenes/Level.unity
+    guid: 05d7db9a7d277bb4896344dd19acfb3d
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: b1cc1b61aa96f2844a9df7b00258a53b
   m_configObjects:
-    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 398d945149746a94899cafbfeddf8c9f,
-      type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a422e2a2e6c83184e9b23d6413331359,
-      type: 2}
-    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 07a9ee58a0c074c428efff65c5a4f857,
-      type: 2}
-    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: e2ffe952874a66b44bdfdb7d08e5ddd2,
-      type: 2}
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4091f9b33263f4c4998314e73d1694f4, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a422e2a2e6c83184e9b23d6413331359, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 07a9ee58a0c074c428efff65c5a4f857, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: e2ffe952874a66b44bdfdb7d08e5ddd2, type: 2}
