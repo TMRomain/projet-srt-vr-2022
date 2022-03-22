@@ -30,7 +30,7 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
             float roll = -Input.GetAxis("Oculus_GearVR_RThumbstickY");
             float pitch = -Input.GetAxis("Oculus_GearVR_RThumbstickX");
             bool airBrakes = CrossPlatformInputManager.GetButton("Fire1");
-            Debug.Log(roll);
+            bool airBrakes2 = CrossPlatformInputManager.GetButton("Fire2");
 
             // auto throttle up, or down if braking.
             float throttle = airBrakes ? -1 : 1;
