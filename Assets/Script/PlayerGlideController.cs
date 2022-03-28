@@ -1,6 +1,6 @@
 using UnityEngine;
  
-public class playerCameraController : MonoBehaviour
+public class PlayerGlideController : MonoBehaviour
 {
 
     // horizontal rotation speed
@@ -14,9 +14,11 @@ public class playerCameraController : MonoBehaviour
     private Camera cam;
     [SerializeField]
     bool doCameraMouvement = true;
-    public Transform CamTransform;
- 
-    void Start()
+    [SerializeField]
+    float playerGlideSpeed = 20f;
+    [SerializeField]
+    float playerGravity= 0f;
+    void Awake()
     {
         cam = Camera.main;
         Cursor.visible = false;
@@ -35,7 +37,10 @@ public class playerCameraController : MonoBehaviour
     
             cam.transform.eulerAngles = new Vector3(xRotation, yRotation, 0.0f);
         }
+        Vector3 dir =  cam.transform.forward;
+        dir.y = playerGravity;
+        GetComponent<Rigidbody>().velocity = playerGlideSpeed * dir;
       
-        CamTransform = cam.transform;
+        
     }
 }
