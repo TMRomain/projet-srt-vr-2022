@@ -15,9 +15,17 @@ public class PlayerGlideController : MonoBehaviour
     [SerializeField]
     bool doCameraMouvement = true;
     [SerializeField]
-    float playerGlideSpeed = 20f;
+    float playerMaxGlideSpeed = 50f;
     [SerializeField]
-    float playerGravity= 0f;
+    float playerMinGlideSpeed = 10f;
+    float playerGlideSpeed = 20f;
+    float playerActualGlideSpeed = 20f;
+    [SerializeField]
+    float playerMaxGravity= 5f;
+    [SerializeField]
+    float playerMinGravity= -2f;
+ 
+    float playerActualGravity= 0f;
     void Awake()
     {
         cam = Camera.main;
@@ -39,14 +47,20 @@ public class PlayerGlideController : MonoBehaviour
         }
         Vector3 dir =  cam.transform.forward;
         if(estDansMarge(cam.transform.forward.y,1f,0.5f)){
-            Debug.Log("Joueur va vers le Hauts");
+            Debug.Log("Joueur va vers le haut");
+            float glideSpeed = playerActualGlideSpeed-cam.transform.forward.y*Time.deltaTime;
+            playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
+
         }else  if(estDansMarge(cam.transform.forward.y,-1f,0.5f)){
             Debug.Log("Joueur va vers le bas");
+            float glideSpeed = playerActualGlideSpeed+cam.transform.forward.y*Time.deltaTime;
+            playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
         }else{
-            Debug.Log("Joueur Milieus");
+            Debug.Log("Joueur va vers le millieu");
+            
         }
-        dir.y = playerGravity;
-        GetComponent<Rigidbody>().velocity = playerGlideSpeed * dir;
+        dir.y = playerActualGravity;
+        GetComponent<Rigidbody>().velocity = playerActualGlideSpeed * dir;
       
         
     }
