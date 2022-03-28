@@ -38,9 +38,27 @@ public class PlayerGlideController : MonoBehaviour
             cam.transform.eulerAngles = new Vector3(xRotation, yRotation, 0.0f);
         }
         Vector3 dir =  cam.transform.forward;
+        if(estDansMarge(cam.transform.forward.y,1f,0.5f)){
+            Debug.Log("Joueur va vers le Hauts");
+        }else  if(estDansMarge(cam.transform.forward.y,-1f,0.5f)){
+            Debug.Log("Joueur va vers le bas");
+        }else{
+            Debug.Log("Joueur Milieus");
+        }
         dir.y = playerGravity;
         GetComponent<Rigidbody>().velocity = playerGlideSpeed * dir;
       
         
+    }
+        bool estDansMarge(float valeur,float valeurSouhaiter,float marge){
+        // Debug.Log(valeur);
+        // Debug.Log(valeurSouhaiter+marge );
+        // Debug.Log(valeurSouhaiter-marge);
+        if( valeur <= valeurSouhaiter+marge ){
+            if(valeurSouhaiter-marge <= valeur ){
+                return true;
+            }
+        }
+        return false;
     }
 }
