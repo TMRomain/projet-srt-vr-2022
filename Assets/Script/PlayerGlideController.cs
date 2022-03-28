@@ -26,7 +26,10 @@ public class PlayerGlideController : MonoBehaviour
     float playerMinGravity= -2f;
  
     float playerActualGravity= 0f;
-
+    [SerializeField]
+    int numberOfBoost;
+    //Utiliser cette valeur Uniquement pour le HUD
+    public int playerSpeed;
 
     float playerMinFov = 50f;
     float playerMaxFov = 90f;
@@ -52,7 +55,7 @@ public class PlayerGlideController : MonoBehaviour
         Vector3 dir =  cam.transform.forward;
 
         float percentage = playerActualGlideSpeed / playerMaxGlideSpeed;
-
+        playerSpeed = (int)(percentage*100);
         if(estDansMarge(cam.transform.forward.y,1f,0.5f)){
             // Debug.Log("Joueur va vers le haut");
             float glideSpeed = playerActualGlideSpeed-(cam.transform.forward.y*percentage*15f)*Time.deltaTime;
@@ -80,17 +83,15 @@ public class PlayerGlideController : MonoBehaviour
           
             
             if(!estDansMarge(playerActualGlideSpeed,playerMinGlideSpeed,10f) && cam.transform.forward.y >0f ){
-                Debug.Log("Monte");
                 float glideSpeed = playerActualGlideSpeed-(cam.transform.forward.y*percentage*2.5f)*Time.deltaTime;
                 playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
                 float playerGravity = playerActualGravity + (0.5f * percentage*cam.transform.forward.y*2f)*Time.deltaTime;
             playerActualGravity = Mathf.Clamp(playerGravity,playerMinGravity,playerMaxGravity);
             }else{
-                Debug.Log("Decent");
                 float glideSpeed = playerActualGlideSpeed+Mathf.Abs(cam.transform.forward.y*percentage*8f)*Time.deltaTime;
                 playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
                 float playerGravity = playerActualGravity - Mathf.Abs((0.5f * percentage*cam.transform.forward.y*8f)*Time.deltaTime);
-                playerActualGravity = Mathf.Clamp(playerGravity,-0.5f,playerMaxGravity);
+                playerActualGravity = Mathf.Clamp(playerGravity,-0.5f,0.5f);
             }
 
         }
