@@ -12,6 +12,9 @@ public class playerCameraController : MonoBehaviour
     private float xRotation = 0.0f;
     private float yRotation = 0.0f;
     private Camera cam;
+    [SerializeField]
+    bool doCameraMouvement = true;
+    public Transform CamTransform;
  
     void Start()
     {
@@ -21,14 +24,18 @@ public class playerCameraController : MonoBehaviour
  
     void Update()
     {
-        cam.transform.position = this.transform.position;
-        float mouseX = Input.GetAxis("Mouse X") * horizontalSpeed;
-        float mouseY = Input.GetAxis("Mouse Y") * verticalSpeed;
- 
-        yRotation += mouseX;
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90, 90);
- 
-        cam.transform.eulerAngles = new Vector3(xRotation, yRotation, 0.0f);
+        if(doCameraMouvement){
+            cam.transform.position = this.transform.position;
+            float mouseX = Input.GetAxis("Mouse X") * horizontalSpeed;
+            float mouseY = Input.GetAxis("Mouse Y") * verticalSpeed;
+    
+            yRotation += mouseX;
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90, 90);
+    
+            cam.transform.eulerAngles = new Vector3(xRotation, yRotation, 0.0f);
+        }
+      
+        CamTransform = cam.transform;
     }
 }
