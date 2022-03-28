@@ -1,5 +1,5 @@
 using UnityEngine;
- 
+using TMPro;
 public class PlayerGlideController : MonoBehaviour
 {
 
@@ -26,13 +26,18 @@ public class PlayerGlideController : MonoBehaviour
     float playerMinGravity= -2f;
  
     float playerActualGravity= 0f;
+
     [SerializeField]
-    int numberOfBoost;
+    int numberOfBoost = 1;
     //Utiliser cette valeur Uniquement pour le HUD
     public int playerSpeed;
 
     float playerMinFov = 50f;
     float playerMaxFov = 90f;
+    [SerializeField]
+    TextMeshProUGUI playerSpeedUI;
+    [SerializeField]
+    TextMeshProUGUI playerDashUI;
     void Awake()
     {
         cam = Camera.main;
@@ -55,7 +60,14 @@ public class PlayerGlideController : MonoBehaviour
         Vector3 dir =  cam.transform.forward;
 
         float percentage = playerActualGlideSpeed / playerMaxGlideSpeed;
+
+        //Affichage de la vitesse 
         playerSpeed = (int)(percentage*100);
+        playerSpeedUI.text = "Vitesse : "+ playerSpeed + "km/h";
+
+        //Affichage du nombre de dash
+        playerDashUI.text = numberOfBoost.ToString();
+
         if(estDansMarge(cam.transform.forward.y,1f,0.5f)){
             // Debug.Log("Joueur va vers le haut");
             float glideSpeed = playerActualGlideSpeed-(cam.transform.forward.y*percentage*15f)*Time.deltaTime;
@@ -86,12 +98,20 @@ public class PlayerGlideController : MonoBehaviour
                 float glideSpeed = playerActualGlideSpeed-(cam.transform.forward.y*percentage*2.5f)*Time.deltaTime;
                 playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
                 float playerGravity = playerActualGravity + (0.5f * percentage*cam.transform.forward.y*2f)*Time.deltaTime;
-            playerActualGravity = Mathf.Clamp(playerGravity,playerMinGravity,playerMaxGravity);
+                 if(playerActualGlideSpeed >80){
+                    playerActualGravity = Mathf.Clamp(playerGravity,-0.2f,0.2f);
+                }else{
+                    playerActualGravity = Mathf.Clamp(playerGravity,playerMinGravity,playerMaxGravity);
+                }
             }else{
                 float glideSpeed = playerActualGlideSpeed+Mathf.Abs(cam.transform.forward.y*percentage*8f)*Time.deltaTime;
                 playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
                 float playerGravity = playerActualGravity - Mathf.Abs((0.5f * percentage*cam.transform.forward.y*8f)*Time.deltaTime);
-                playerActualGravity = Mathf.Clamp(playerGravity,-0.5f,0.5f);
+                if(playerActualGlideSpeed >80){
+                    playerActualGravity = Mathf.Clamp(playerGravity,-0.2f,0.2f);
+                }else{
+                    playerActualGravity = Mathf.Clamp(playerGravity,-0.5f,0.5f);
+                }
             }
 
         }
@@ -99,7 +119,12 @@ public class PlayerGlideController : MonoBehaviour
         dir.y = playerActualGravity;
         GetComponent<Rigidbody>().velocity = playerActualGlideSpeed * dir;
       
-        
+        if(Input.GetButtonDown("Fire1")){
+            if(numberOfBoost > 0){
+                numberOfBoost--;
+                playerActualGlideSpeed = Mathf.Clamp(playerActualGlideSpeed+50,playerMinGlideSpeed,playerMaxGlideSpeed);
+            }
+        }
     }
         bool estDansMarge(float valeur,float valeurSouhaiter,float marge){
         // Debug.Log(valeur);
