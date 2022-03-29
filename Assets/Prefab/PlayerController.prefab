@@ -5268,7 +5268,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3266971011453682012}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 315.62793, y: 50.32724, z: -37.375763}
+  m_LocalPosition: {x: 864, y: 304.5, z: 113.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3266971010556656027}
@@ -5350,11 +5350,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalSpeed: 1
   verticalSpeed: 1
-  doCameraMouvement: 1
+  doCameraMouvement: 0
   playerMaxGlideSpeed: 60
   playerMinGlideSpeed: 10
   playerMaxGravity: 5
-  playerMinGravity: -2
+  playerMinGravity: -1
   boostSpeed: 20
   numberOfBoost: 1
   playerSpeed: 0
