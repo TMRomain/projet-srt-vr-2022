@@ -24,7 +24,8 @@ public class PlayerGlideController : MonoBehaviour
     float playerMaxGravity= 5f;
     [SerializeField]
     float playerMinGravity= -2f;
- 
+    [SerializeField]
+    int boostSpeed = 20;
     float playerActualGravity= 0f;
 
     [SerializeField]
@@ -99,7 +100,7 @@ public class PlayerGlideController : MonoBehaviour
                 playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
                 float playerGravity = playerActualGravity + (0.5f * percentage*cam.transform.forward.y*2f)*Time.deltaTime;
                  if(playerActualGlideSpeed >80){
-                    playerActualGravity = Mathf.Clamp(playerGravity,-0.2f,0.2f);
+                    playerActualGravity = Mathf.Clamp(playerGravity,-0.8f,0.5f);
                 }else{
                     playerActualGravity = Mathf.Clamp(playerGravity,playerMinGravity,playerMaxGravity);
                 }
@@ -108,9 +109,9 @@ public class PlayerGlideController : MonoBehaviour
                 playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
                 float playerGravity = playerActualGravity - Mathf.Abs((0.5f * percentage*cam.transform.forward.y*8f)*Time.deltaTime);
                 if(playerActualGlideSpeed >80){
-                    playerActualGravity = Mathf.Clamp(playerGravity,-0.2f,0.2f);
+                    playerActualGravity = Mathf.Clamp(playerGravity,-0.8f,0.5f);
                 }else{
-                    playerActualGravity = Mathf.Clamp(playerGravity,-0.5f,0.5f);
+                    playerActualGravity = Mathf.Clamp(playerGravity,-1.5f,1.5f);
                 }
             }
 
@@ -122,7 +123,7 @@ public class PlayerGlideController : MonoBehaviour
         if(Input.GetButtonDown("Fire1")){
             if(numberOfBoost > 0){
                 numberOfBoost--;
-                playerActualGlideSpeed = Mathf.Clamp(playerActualGlideSpeed+50,playerMinGlideSpeed,playerMaxGlideSpeed);
+                playerActualGlideSpeed = Mathf.Clamp(playerActualGlideSpeed+ boostSpeed, playerMinGlideSpeed,playerMaxGlideSpeed);
             }
         }
     }
