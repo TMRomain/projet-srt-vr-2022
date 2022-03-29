@@ -69,7 +69,7 @@ public class PlayerGlideController : MonoBehaviour
         //Affichage du nombre de dash
         playerDashUI.text = numberOfBoost.ToString();
 
-        if(estDansMarge(cam.transform.forward.y,1f,0.7f)){
+        if(estDansMarge(cam.transform.forward.y,1f,0.8f)){
             // Debug.Log("Joueur va vers le haut");
             float glideSpeed = playerActualGlideSpeed-(cam.transform.forward.y*percentage*15f)*Time.deltaTime;
             playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
@@ -98,9 +98,9 @@ public class PlayerGlideController : MonoBehaviour
             if(!estDansMarge(playerActualGlideSpeed,playerMinGlideSpeed,10f) && cam.transform.forward.y >0f ){
                 float glideSpeed = playerActualGlideSpeed-(cam.transform.forward.y*percentage*2.5f)*Time.deltaTime;
                 playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
-                float playerGravity = playerActualGravity + (0.5f * percentage*cam.transform.forward.y*2f)*Time.deltaTime;
+                float playerGravity = playerActualGravity + (0.5f * percentage*cam.transform.forward.y*8f)*Time.deltaTime;
                  if(playerActualGlideSpeed >80){
-                    playerActualGravity = Mathf.Clamp(playerGravity,-0.4f,1f);
+                    playerActualGravity = Mathf.Clamp(playerGravity,-0.4f,3f);
                 }else{
                     playerActualGravity = Mathf.Clamp(playerGravity,playerMinGravity,playerMaxGravity);
                 }
@@ -109,9 +109,9 @@ public class PlayerGlideController : MonoBehaviour
                 playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
                 float playerGravity = playerActualGravity - Mathf.Abs((0.5f * percentage*cam.transform.forward.y*8f)*Time.deltaTime);
                 if(playerActualGlideSpeed >80){
-                    playerActualGravity = Mathf.Clamp(playerGravity,-0.6f,0.6f);
+                    playerActualGravity = Mathf.Clamp(playerGravity,-0.6f,3f);
                 }else{
-                    playerActualGravity = Mathf.Clamp(playerGravity,-1f,1.5f);
+                    playerActualGravity = Mathf.Clamp(playerGravity,-1f,3f);
                 }
             }
 
