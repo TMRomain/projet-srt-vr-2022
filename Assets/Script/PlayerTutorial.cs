@@ -5,22 +5,38 @@ using UnityEngine;
 public class PlayerTutorial : MonoBehaviour
 {
     [SerializeField]
-    GameObject player;
+    GameObject[] objectForGame;
     [SerializeField]
-    GameObject playerHUD;
-    [SerializeField]
-    GameObject tutorialHUD;
+    GameObject[] tutorialObject;
 
     public void Start(){
-        tutorialHUD.SetActive(true);
-        playerHUD.SetActive(false);
-        player.SetActive(false);
+        EnableTutorial();
     }
      public void Update(){
         if(Input.GetButtonDown("Fire1")){
-            tutorialHUD.SetActive(false);
-            playerHUD.SetActive(true);
-            player.SetActive(true);
+            DisableTutorial();
+        }
+    }
+    private void DisableTutorial()
+    {
+        foreach(GameObject obj in tutorialObject)
+        {
+            obj.SetActive(false);
+        }
+        foreach (GameObject obj in objectForGame)
+        {
+            obj.SetActive(true);
+        }
+    }
+    private void EnableTutorial()
+    {
+        foreach (GameObject obj in tutorialObject)
+        {
+            obj.SetActive(true);
+        }
+        foreach (GameObject obj in objectForGame)
+        {
+            obj.SetActive(false);
         }
     }
 }

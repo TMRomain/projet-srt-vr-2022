@@ -85,7 +85,7 @@ public class PlayerGlideController : MonoBehaviour
 
         }else  if(estDansMarge(cam.transform.forward.y,-1f,0.5f)){
             // Debug.Log("Joueur va vers le bas");
-            float glideSpeed = playerActualGlideSpeed+Mathf.Abs(cam.transform.forward.y*15f)*Time.deltaTime;
+            float glideSpeed = playerActualGlideSpeed+Mathf.Abs(cam.transform.forward.y*8f)*Time.deltaTime;
             playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
             
             float playerGravity = playerActualGravity - (1 * percentage*2)*Time.deltaTime;
@@ -109,7 +109,7 @@ public class PlayerGlideController : MonoBehaviour
                 playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
                 float playerGravity = playerActualGravity - Mathf.Abs((0.5f * percentage*cam.transform.forward.y*8f)*Time.deltaTime);
                 if(playerActualGlideSpeed >80){
-                    playerActualGravity = Mathf.Clamp(playerGravity,-0.8f,0.5f);
+                    playerActualGravity = Mathf.Clamp(playerGravity,-0.8f,0.8f);
                 }else{
                     playerActualGravity = Mathf.Clamp(playerGravity,-1.5f,1.5f);
                 }
