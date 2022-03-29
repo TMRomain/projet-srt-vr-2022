@@ -69,7 +69,7 @@ public class PlayerGlideController : MonoBehaviour
         //Affichage du nombre de dash
         playerDashUI.text = numberOfBoost.ToString();
 
-        if(estDansMarge(cam.transform.forward.y,1f,0.5f)){
+        if(estDansMarge(cam.transform.forward.y,1f,0.7f)){
             // Debug.Log("Joueur va vers le haut");
             float glideSpeed = playerActualGlideSpeed-(cam.transform.forward.y*percentage*15f)*Time.deltaTime;
             playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
@@ -83,7 +83,7 @@ public class PlayerGlideController : MonoBehaviour
             }
            
 
-        }else  if(estDansMarge(cam.transform.forward.y,-1f,0.5f)){
+        }else  if(estDansMarge(cam.transform.forward.y,-1f,0.7f)){
             // Debug.Log("Joueur va vers le bas");
             float glideSpeed = playerActualGlideSpeed+Mathf.Abs(cam.transform.forward.y*8f)*Time.deltaTime;
             playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
