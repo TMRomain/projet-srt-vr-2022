@@ -100,7 +100,7 @@ public class PlayerGlideController : MonoBehaviour
                 playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
                 float playerGravity = playerActualGravity + (0.5f * percentage*cam.transform.forward.y*2f)*Time.deltaTime;
                  if(playerActualGlideSpeed >80){
-                    playerActualGravity = Mathf.Clamp(playerGravity,-0.8f,0.5f);
+                    playerActualGravity = Mathf.Clamp(playerGravity,-0.4f,1f);
                 }else{
                     playerActualGravity = Mathf.Clamp(playerGravity,playerMinGravity,playerMaxGravity);
                 }
@@ -109,9 +109,9 @@ public class PlayerGlideController : MonoBehaviour
                 playerActualGlideSpeed = Mathf.Clamp(glideSpeed,playerMinGlideSpeed,playerMaxGlideSpeed);
                 float playerGravity = playerActualGravity - Mathf.Abs((0.5f * percentage*cam.transform.forward.y*8f)*Time.deltaTime);
                 if(playerActualGlideSpeed >80){
-                    playerActualGravity = Mathf.Clamp(playerGravity,-0.8f,0.8f);
+                    playerActualGravity = Mathf.Clamp(playerGravity,-0.6f,0.6f);
                 }else{
-                    playerActualGravity = Mathf.Clamp(playerGravity,-1.5f,1.5f);
+                    playerActualGravity = Mathf.Clamp(playerGravity,-1f,1.5f);
                 }
             }
 
