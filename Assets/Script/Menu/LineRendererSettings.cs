@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class LineRendererSettings : MonoBehaviour
 {
     public GameObject panel;
     public Image img;
     public Button btn;
+    public ActionBasedController actionBasedController;
     
     [SerializeField] private LineRenderer rend;
     private Vector3[] points;
@@ -17,7 +19,7 @@ public class LineRendererSettings : MonoBehaviour
         rend = gameObject.GetComponent<LineRenderer>();
         points = new Vector3[2];
         points[0] = Vector3.zero;
-        points[1] = transform.position + new Vector3(0, 0, 20);
+        points[1] = transform.position + new Vector3(0, 0, 100);
         
         rend.SetPositions(points);
         rend.enabled = true;
@@ -32,6 +34,7 @@ public class LineRendererSettings : MonoBehaviour
         ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
+        Debug.DrawRay(transform.position, transform.forward * 100, Color.yellow);
         if (Physics.Raycast(ray, out hit, layerMask))
         {
             points[1] = transform.forward + new Vector3(0, 0, hit.distance);
@@ -43,7 +46,7 @@ public class LineRendererSettings : MonoBehaviour
         }
         else
         {
-            points[1] = transform.forward + new Vector3(0,0,20);
+            points[1] = transform.forward + new Vector3(0,0,100);
             rend.startColor = Color.green;
             rend.endColor = Color.green;
 
@@ -68,7 +71,7 @@ public class LineRendererSettings : MonoBehaviour
     void Update()
     {
 
-        if (AlignLineRenderer(rend) && Input.GetAxis("Submit") > 0)
+        if (AlignLineRenderer(rend) && actionBasedController.selectAction.action.triggered)
         {
             btn.onClick.Invoke();
         }
